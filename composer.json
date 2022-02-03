@@ -1,0 +1,15 @@
+{
+    "name": "crixuamg/php-ical",
+    "autoload": {
+        "psr-4": {
+            "CrixuAMG\\Ical\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Christian Kaal",
+            "email": "christiankaal@gmail.com"
+        }
+    ],
+    "require": {}
+}
