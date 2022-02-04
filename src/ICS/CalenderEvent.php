@@ -54,6 +54,14 @@ class CalenderEvent implements ICSInterface
      * @var DateTimeInterface
      */
     protected $dateStamp;
+    /**
+     * @var string
+     */
+    protected $description;
+    /**
+     * @var array
+     */
+    private $categories;
 
     /**
      * @param  string  $type
@@ -176,12 +184,28 @@ class CalenderEvent implements ICSInterface
     }
 
     /**
+     * @param  string  $value
+     * @return $this
+     */
+    public function setDescription(string $value): CalenderEvent
+    {
+        $this->description = $value;
+        return $this;
+    }
+
+    /**
      * @param  DateTimeInterface  $value
      * @return $this
      */
     public function setDateStamp(DateTimeInterface $value): CalenderEvent
     {
         $this->dateStamp = $value;
+        return $this;
+    }
+
+    public function setCategories(array $categories): CalenderEvent
+    {
+        $this->categories = $categories;
         return $this;
     }
 
@@ -203,6 +227,12 @@ class CalenderEvent implements ICSInterface
         $string .= "LOCATION:$this->location".PHP_EOL;
         $string .= "ORGANIZER:$this->organizer".PHP_EOL;
         $string .= "SUMMARY:$this->summary".PHP_EOL;
+        $string .= "DESCRIPTION:$this->description".PHP_EOL;
+
+        if ($this->categories) {
+            $string .= "CATEGORIES:".implode(',', $this->categories);
+        }
+
         $string .= "END:$this->type".PHP_EOL;
 
         return str_replace(' ', '', $string);
