@@ -25,6 +25,6 @@ class ICSDocument extends BaseDocument
 
         $string .= "END:VCALENDAR";
 
-        return str_replace(' ', '', $string);
+        return $string;
     }
 }

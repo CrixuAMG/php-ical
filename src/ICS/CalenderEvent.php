@@ -230,11 +230,11 @@ class CalenderEvent implements ICSInterface
         $string .= "DESCRIPTION:$this->description".PHP_EOL;
 
         if ($this->categories) {
-            $string .= "CATEGORIES:".implode(',', $this->categories);
+            $string .= "CATEGORIES:".implode(',', $this->categories).PHP_EOL;
         }
 
         $string .= "END:$this->type".PHP_EOL;
 
-        return str_replace(' ', '', $string);
+        return $string;
     }
 }
